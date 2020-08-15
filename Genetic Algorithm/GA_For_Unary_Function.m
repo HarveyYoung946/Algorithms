@@ -1,38 +1,38 @@
-%%ÀûÓÃ»ùÒòËã·¨Çó10*sin(5*x)+7*abs(x-5)+10µÄ×î´ó½âÒÔ¼°¶¯Ì¬ÏÔÊ¾
+%%åˆ©ç”¨åŸºå› ç®—æ³•æ±‚10*sin(5*x)+7*abs(x-5)+10çš„æœ€å¤§è§£ä»¥åŠåŠ¨æ€æ˜¾ç¤º
 clear;
 clc;
-%ÖÖÈº´óĞ¡
+%ç§ç¾¤å¤§å°
 popsize = 100;
-%¶ş½øÖÆ±àÂë³¤¶È
+%äºŒè¿›åˆ¶ç¼–ç é•¿åº¦
 chromlength = 10;
-%½»²æ¸ÅÂÊ
+%äº¤å‰æ¦‚ç‡
 pc = 0.6;
-%±äÒì¸ÅÂÊ
+%å˜å¼‚æ¦‚ç‡
 pm = 0.002; 
-%³õÊ¼»¯ÖÖÈº
+%åˆå§‹åŒ–ç§ç¾¤
 pop = initpop(popsize,chromlength);
 
 % disp('position1');
 for i = 1:100
-    %¼ÆËãÊÊÓ¦¶È
+    %è®¡ç®—é€‚åº”åº¦
     objvalue = cal_objvalue(pop);
     fitvalue = objvalue;
-    %disp('¼ÆËãÊÊÓ¦¶È');
-    %Ñ¡Ôñ²Ù×÷
+    %disp('è®¡ç®—é€‚åº”åº¦');
+    %é€‰æ‹©æ“ä½œ
     newpop = selection(pop,fitvalue);
-  %  disp('Ñ¡Ôñ²Ù×÷');
-    %½»²æ²Ù×÷
+  %  disp('é€‰æ‹©æ“ä½œ');
+    %äº¤å‰æ“ä½œ
     newpop = crossover(newpop,pc);
-   %  disp('½»²æ²Ù×÷');
-    %±äÒì²Ù×÷
+   %  disp('äº¤å‰æ“ä½œ');
+    %å˜å¼‚æ“ä½œ
     newpop = mutation(newpop,pm);
-  %   disp('±äÒì²Ù×÷');
-    %¸üĞÂÖÖÈº
+  %   disp('å˜å¼‚æ“ä½œ');
+    %æ›´æ–°ç§ç¾¤
     pop = newpop;
-  %   disp('¸üĞÂÖÖÈº');
-    %Ñ°ÕÒ×îÓÅ½â
+  %   disp('æ›´æ–°ç§ç¾¤');
+    %å¯»æ‰¾æœ€ä¼˜è§£
     [bestindividual,bestfit] = best(pop,fitvalue);
-  %   disp('Ñ°ÕÒ×îÓÅ½â');
+  %   disp('å¯»æ‰¾æœ€ä¼˜è§£');
     x2 = binary2decimal(bestindividual);
     x1 = binary2decimal(newpop);
     y1 = cal_objvalue(newpop);
@@ -45,12 +45,12 @@ for i = 1:100
        % figure;
         % hold on;
 %         plot(x1,y1,'*');
-        %title(['µü´ú´ÎÊıÎªn=' num2str(i)]);
+        %title(['è¿­ä»£æ¬¡æ•°ä¸ºn=' num2str(i)]);
 %         drawnow
         plot(x, y, 'b-', x1, y1, 'ro');
-        title(['µü´ú´ÎÊıÎªn=' num2str(i)]);
+        title(['è¿­ä»£æ¬¡æ•°ä¸ºn=' num2str(i)]);
         pause(0.1);
-       % title('×´Ì¬Î»ÖÃ±ä»¯');
+       % title('çŠ¶æ€ä½ç½®å˜åŒ–');
         
         %plot(x1,y1,'*');
     end
